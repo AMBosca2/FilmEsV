@@ -1,0 +1,33 @@
+{% extends "admin_base.njk" %}
+ {% block nombre %} Peliculas | Listado {% endblock %}
+    {% block contenido %}
+
+ <a class="btn btn-dark" href="/admin/plataforma/">PLATAFORMAS</a>
+ <a class="btn btn-dark" href="/admin/director/">DIRECTORES</a>
+
+<br>
+ <h2 class="pelicula">
+    Listado de Películas
+</h2>
+
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        {% for pelicula in peliculas %}
+         <tbody>
+            <td>{{pelicula.titulo}}</td>
+            <td class="tablasPelicula">
+                <a class="btn btn-dark" href="/pelicula/{{ pelicula.id }}">Ver ficha</a>
+                <a class="btn btn-primary" href="/admin/peliculas/{{ pelicula.id }}">Editar</a>
+                <form style="display:inline" action="/admin/peliculas/{{ pelicula.id }}" method="post">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-danger">Borrar</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+        {% else %}
+            <tr><td>No hay películas que mostrar.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

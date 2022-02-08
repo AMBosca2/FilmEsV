@@ -1,0 +1,150 @@
+{% extends "admin_base.njk" %}
+
+{% block titulo %} Peliculas {% endblock %}
+
+{% block contenido %}
+
+{% if (error) %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <a class="btn btn-dark" href="/admin">Atrás</a>
+
+{% if pelicula %}
+
+<h2 class="pelicula">Modificando película...</h2>
+<hr>
+<form action="/admin/peliculas/{{pelicula.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+<input type="hidden" name="_method" value="put" />
+    <div class="form-group">
+        <label for="titulo">Titulo:</label>
+        <input type="text" class="form-control" name="titulo" value="{{pelicula.titulo}}" placeholder="Titulo de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="sinopsi">Sinopsi:</label>
+        <input type="text" class="form-control" name="sinopsi" value="{{pelicula.sinopsi}}" placeholder="sinopsi de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="duracion">Duración:</label>
+        <input type="number" class="form-control" name="duracion" value="{{pelicula.duracion}}" placeholder="duración de la película..."/>
+    </div>
+
+       <div class="form-group">
+        <label for="genero">Genero:</label>
+        <select  class="form-select form-select-sm" name="genero" >
+        <option value="{{pelicula.genero}}">{{pelicula.genero}}</option>
+            {% for genero in generos %}
+            <option value="{{genero}}"> {{genero}} </option>
+            {% endfor %}
+         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="valoracion">Valoración:</label>
+        <input type="number" class="form-control" name="valoracion" value="{{pelicula.valoracion}}"placeholder="valorción de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="plataforma">Plataforma:</label>
+        <select  class="form-select form-select-sm" name="plataforma">
+        <option value="{{pelicula.plataforma.id}}">{{pelicula.plataforma.nombre}}</option>
+            {% for plataforma in plataformas %}
+            <option value="{{plataforma.id}}"> {{plataforma.nombre}} </option>
+            {% endfor %}
+         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="director">Director:</label>
+        <select class="form-select form-select-sm" name="director">
+        <option value="{{pelicula.director.id}}">{{pelicula.director.nombre}}</option>
+            {% for director in directores %}
+            <option value="{{director.id}}"> {{director.nombre}} </option>
+            {% endfor %}
+         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="imagen">Portada:</label>
+        <input value="{{pelicula.imagen}}"type="file" class="form-control" name="imagen"
+            placeholder="Portada de la película..." />
+    </div>
+
+<button id="enviar" type="submit" class="btn btn-primary"> Enviar</button>
+</form>
+<br>
+<br>
+<br>
+
+{% else %}
+
+<h2 class="pelicula">Inserción de nueva pelicula</h2>
+<hr>
+<form action="/admin/peliculas" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="titulo">Titulo:</label>
+        <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="sinopsi">Sinopsi:</label>
+        <input type="text" class="form-control" name="sinopsi" id="sinopsi" placeholder="sinopsi de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="duracion">Duración:</label>
+        <input type="number" class="form-control" name="duracion" id="duracion" placeholder="duración de la película..."/>
+    </div>
+
+       <div class="form-group">
+        <label for="genero">Genero:</label>
+        <select class="form-select form-select-sm" name="genero" >
+        <option> Selecciona una opción... </option>
+            {% for genero in generos %}
+            <option value="{{genero}}"> {{genero}} </option>
+            {% endfor %}
+         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="valoracion">Valoración:</label>
+        <input type="number" class="form-control" name="valoracion" id="valoracion" placeholder="valorción de la película..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="plataforma">Plataforma:</label>
+        <select class="form-select form-select-sm"  name="plataforma">
+        <option> Selecciona una opción... </option>
+            {% for plataforma in plataformas %}
+            <option value="{{plataforma.id}}"> {{plataforma.nombre}} </option>
+            {% endfor %}
+        </select>
+        
+    </div>
+
+    <div class="form-group">
+        <label for="director">Director:</label>
+        <select class="form-select form-select-sm" name="director">
+        <option> Selecciona una opción... </option>
+            {% for director in directores %}
+            <option value="{{director.id}}"> {{director.nombre}} </option>
+            {% endfor %}
+         </select>
+    </div>
+
+    <div class="form-group">
+        <label for="imagen">Portada:</label>
+        <input type="file" class="form-control" name="imagen"
+        placeholder="Portada de la película..." />
+    </div>
+
+<button id="enviar" type="submit" class="btn btn-primary"> Enviar</button>
+<br>
+<br>
+<br>
+</form>
+{% endif %}
+{% endblock %}

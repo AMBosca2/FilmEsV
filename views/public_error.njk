@@ -1,0 +1,17 @@
+{% extends "public_base.njk" %}
+
+{% block titulo %} PUBLIC | Error{% endblock %}
+
+{% block contenido %}
+
+    <h1>Error</h1>
+    <div class="alert alert-danger">
+        {% if error %}
+            {{ error }}
+        {% else %}
+            Error en la aplicación
+        {% endif %}
+    </div>
+     <a class="btn btn-dark" href="/">Atrás</a>
+
+{% endblock %}

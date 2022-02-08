@@ -1,0 +1,70 @@
+{% extends "admin_base.njk" %}
+
+{% block titulo %} Directores {% endblock %}
+
+{% block contenido %}
+
+{% if (error) %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <a class="btn btn-dark" href="/admin/director">Atrás</a>
+
+{% if director %}
+
+<h2 class="director">Modificando director...</h2>
+<hr>
+<form action="/admin/director/editar/{{director.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+<input type="hidden" name="_method" value="put" />
+    
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" value="{{director.nombre}}"/>
+    </div>
+
+    <div class="form-group">
+        <label for="nacimiento">Año de nacimiento</label>
+        <input type="number" class="form-control" name="nacimiento" value="{{director.nacimiento}}"/>
+    </div>
+
+        <div class="form-group">
+        <label for="perfil">Foto:</label>
+        <input type="file" class="form-control" name="perfil"
+        placeholder="Perfil del director..." />
+    </div>
+
+    <button id="enviar" type="submit" class="btn btn-primary"> Enviar</button>
+</form>
+<br>
+<br>
+<br>
+
+{% else %}
+
+<h2 class="director">Inserción de nuevo director</h2>
+<hr>
+<form action="/admin/director/nuevo" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre del director..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="nacimiento">Año de nacimiento</label>
+        <input type="number" class="form-control" name="nacimiento" placeholder="nacimiento del director..."/>
+    </div>
+
+        <div class="form-group">
+        <label for="perfil">Foto:</label>
+        <input type="file" class="form-control" name="perfil"
+        placeholder="Perfil del director..." />
+    </div>  
+
+<button id="enviar" type="submit" class="btn btn-primary"> Enviar</button>
+<br>
+<br>
+<br>
+</form>
+{% endif %}
+{% endblock %}

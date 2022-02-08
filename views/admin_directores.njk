@@ -1,0 +1,42 @@
+{% extends "admin_base.njk" %}
+ {% block nombre %} Directores | Listado {% endblock %}
+    {% block contenido %}
+
+     <a class="btn btn-dark" href="/admin/">Atrás</a>
+<br>
+ <h2 class="director">
+    Directores
+</h2>
+
+<table class="table">
+    <thead class="thead-light">
+            <tr>
+                <th scope="col">Perfil</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Año nacimiento</th>
+                <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            {% for director in directores %}
+            <tbody>
+                <tr>
+                <td><img src="/public/uploads/{{director.perfil}}" style="width:10%"/></td>
+                <td>{{director.nombre}}</td>
+                <td>{{director.nacimiento}}</td>
+                <td>
+                <a class="btn btn-dark" href="/director/{{ director.id }}">Ver ficha</a>
+                 <a class="btn btn-primary" href="/admin/director/editar/{{ director.id }}">Editar</a> 
+                <form style="display:inline" action="/admin/director/borrar/{{ director.id }}" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form> 
+                    </td>
+                </tr>
+            </tr>
+    </tbody>
+
+     {% else %}
+            <tr><td>No hay directores que mostrar.</td></tr>
+        {% endfor %}
+</table>
+{% endblock %}

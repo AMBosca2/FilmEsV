@@ -1,0 +1,47 @@
+{% extends "admin_base.njk" %}
+ {% block nombre %} Plataformas | Listado {% endblock %}
+    {% block contenido %}
+
+     <a class="btn btn-dark" href="/admin">Atrás</a>
+<br>
+ <h2 class="plataforma">
+    Plataformas
+</h2>
+
+<table class="table">
+    <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Premium</th>
+                <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            {% for plataforma in plataformas %}
+            <tbody>
+                <tr>
+                <td>{{plataforma.nombre}}</td>
+                <td>{{plataforma.fecha}}</td>
+                {% if plataforma.cantidad == true %}
+                <td>SI</td>
+                {% else %}
+                <td>NO</td>
+                {% endif %}
+                 
+                <td>
+                 <a class="btn btn-primary" href="/admin/plataforma/editar/{{ plataforma.id }}">Editar</a> 
+                
+                <form style="display:inline" action="/admin/plataforma/borrar/{{ plataforma.id }}" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form> 
+                    </td>
+                </tr>
+            </tr>
+    </tbody>
+
+     {% else %}
+            <tr><td>No hay plataformas que mostrar.</td></tr>
+        {% endfor %}
+</table>
+{% endblock %}

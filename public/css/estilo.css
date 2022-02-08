@@ -1,0 +1,314 @@
+#logout {
+    float: right;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.cellphone-container {
+    width: 600px;
+    height: 780px;
+    background-color: rgb(28, 31, 35);
+    margin: 60px auto 0 auto;
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+
+.movie-img img {
+    width: 100%;
+    height: 380px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 111 !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    position: relative;
+    object-fit: cover;
+    border-bottom: 4px solid white;
+    margin-bottom: 20px;
+}
+
+.text-movie-cont {
+    padding: 0px 12px;
+    text-align: justify;
+    font-family: 'Segoe UI';
+}
+
+
+/* TYPOGRAPHY STARTS */
+
+
+/* Fonts */
+
+hr.lineCard {
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+}
+
+h1.titulo {
+    color: rgb(226, 226, 226);
+}
+
+td.tablasPelicula {
+    float: right;
+}
+
+h2.plataforma,
+h2.pelicula,
+h2.director {
+    margin: 30px;
+    font-family: 'Segoe UI';
+    margin-left: 0;
+}
+
+label {
+    margin: 10px;
+}
+
+input {
+    margin: 50px
+}
+
+h1.titulo,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0px;
+}
+
+h1.titulo {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fe4141;
+}
+
+h5 {
+    font-size: 10px;
+    font-weight: 400;
+    color: #fe4141;
+}
+
+.movie-gen,
+.movie-likes {
+    margin: 0px;
+    padding: 0px;
+}
+
+button#enviar {
+    margin-top: 20px;
+}
+
+.movie-gen li,
+.movie-likes li {
+    font-size: 14px;
+    color: #bebebe;
+    width: auto;
+    display: block;
+    float: left;
+    margin-right: 6px;
+    font-weight: 600;
+}
+
+.movie-likes {
+    float: right;
+}
+
+.movie-likes li {
+    color: #fe4141;
+}
+
+.movie-likes li:last-child {
+    margin-right: 0px;
+}
+
+.movie-details {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #b4b4b4;
+}
+
+.movie-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    color: #999999;
+    text-align: justify;
+    line-height: 1.1;
+}
+
+.movie-actors {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #e7e7e7;
+    font-style: italic;
+}
+
+
+/* TYPOGRAPHY ENDS */
+
+
+/** GRID STARTS **/
+
+.thegrid {
+    margin: 0 auto;
+}
+
+.elements-distance,
+.movie-details,
+.movie-description,
+.movie-actors {
+    margin: 0px;
+}
+
+.mr-grid {
+    width: 100%;
+}
+
+.mr-grid:before,
+.mr-grid:after {
+    content: "";
+    display: table;
+}
+
+.mr-grid:after {
+    clear: both;
+}
+
+.mr-grid {
+    *zoom: 1;
+}
+
+.col1,
+.col2,
+.col3,
+.col3rest,
+.col4,
+.col4rest,
+.col5,
+.col5rest,
+.col6,
+.col6rest {
+    margin: 0% 0.5% 0.5% 0.5%;
+    padding: 1%;
+    float: left;
+    display: block;
+}
+
+
+/* Columns match, minus margin sum. E.G. margin-left+margin-right=1%, col2=50%-1% - added padding:1%*/
+
+.col1 {
+    width: 98%;
+}
+
+.col2 {
+    width: 47%;
+}
+
+.col3 {
+    width: 30.3333333333%;
+}
+
+.col4 {
+    width: 22%;
+}
+
+.col5 {
+    width: 17%;
+}
+
+.col6 {
+    width: 13.6666666667%;
+}
+
+
+/* Columns match with their individual number. E.G. col3+col3rest=full width row */
+
+.col3rest {
+    width: 63.6666666667%;
+}
+
+.col4rest {
+    width: 72%;
+}
+
+.col5rest {
+    width: 77%;
+}
+
+.col6rest {
+    width: 80.3333333333%;
+}
+
+.dribbble-link {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 50px;
+}
+
+
+/* Lazy Load Styles */
+
+.card-image {
+    display: block;
+    background: #fff center center no-repeat;
+}
+
+.card-image>img {
+    display: block;
+    width: 100%;
+}
+
+.card-list {
+    font-size: 16px;
+    font-family: sans-serif;
+    display: inline-block;
+    margin: 1rem auto;
+    padding: 0;
+    font-size: 0;
+    text-align: center;
+    list-style: none;
+}
+
+.card {
+    display: inline-block;
+    width: 90%;
+    max-width: 40rem;
+    margin: 1rem;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+
+.card-description {
+    display: block;
+    padding: 1em 0.5em;
+    color: #515151;
+    text-decoration: none;
+}
+
+.card-description>h2 {
+    margin: 0 0 0.5em;
+}
+
+.card-description>p {
+    margin: 0;
+}

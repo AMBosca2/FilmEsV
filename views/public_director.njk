@@ -1,0 +1,27 @@
+{% extends "public_base.njk" %}
+ {% block nombre %} Director {% endblock %}
+    {% block contenido %}
+
+{% if (session and session.login) %}
+<a class="btn btn-dark" href="/admin/director/">Atrás</a>
+{% endif %}
+    
+<br>
+ <h2 class="director">
+    Director
+</h2>
+
+<ul class="card-list">
+	<li class="card">
+		<div class="card-image">
+			<img src="/public/uploads/{{ director.perfil }}"/>
+		</div>
+		<a class="card-description" target="_blank">
+			<h2>{{director.nombre}}</h2>
+            <p>Año de nacimiento</p>
+			<p>{{director.nacimiento}}</p>
+		</a>
+	</li>
+</ul>
+
+{% endblock %}

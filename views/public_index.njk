@@ -1,0 +1,32 @@
+
+
+{% extends "public_base.njk" %}
+
+{% block nombre %} Listado de peliculas {% endblock %}
+    {% block contenido %}
+
+<br>
+<div class="col-md-12">
+    <div class="alert alert-secondary">
+    <form class="navbar-form navbar-right" action="/buscar" method="GET">
+        <div class="form-group">
+        <input type="text" name="buscar" class="form-control" placeholder="Buscar contenido"> 
+        </div> 
+        <br>
+        <button type="submit" class="btn btn-primary">Buscar</button> 
+    </form>
+
+        {% for pelicula in peliculas %}
+
+            <br>
+            <h1>
+                Películas encontradas
+            </h1>
+                <br>
+            <div>
+                <h4><strong>Título:</strong> {{ pelicula.titulo }}  <a class="btn btn-dark" href="/pelicula/{{ pelicula.id }}">Ver ficha</a> </h4>
+            </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

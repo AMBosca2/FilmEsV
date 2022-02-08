@@ -1,0 +1,79 @@
+{% extends "admin_base.njk" %}
+
+{% block titulo %} Plataformas {% endblock %}
+
+{% block contenido %}
+
+{% if (error) %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <a class="btn btn-dark" href="/admin/plataforma">Atrás</a>
+
+{% if plataforma %}
+
+<h2 class="plataforma">Modificar plataforma {{plataforma.nombre}}</h2>
+<hr class="line">
+<form action="/admin/plataforma/editar/{{plataforma.id}}" method="post">
+<input type="hidden" name="_method" value="put" />
+
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" value="{{plataforma.nombre}}" placeholder="Nombre de la plataforma..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="fecha">Cambio de fecha:</label>
+        <input type="date" class="form-control" name="fecha" />
+        Fecha: {{plataforma.fecha}})
+    </div>
+
+ <div class="form-group">
+        <label>
+        {% if plataforma.cantidad == true %}
+        <input type="checkbox" name="cantidad" value="{{plataforma.cantidad}}" checked>
+        {% else %}
+        <input type="checkbox" name="cantidad" value="{{plataforma.cantidad}}">
+         {% endif %}
+         Premium
+        </label>
+    </div>
+   <br>
+
+    <button type="submit" class="btn btn-primary"> Enviar</button>
+</form>
+
+{% else %}
+
+<h2 class="plataforma">Inserción de nueva plataforma</h2>
+<hr class="line">
+
+<form action="/admin/plataforma/nueva" method="post">
+
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre de la plataforma..."/>
+    </div>
+
+    <div class="form-group">
+        <label for="fecha">fecha:</label>
+        <input type="date" class="form-control" name="fecha" />
+    </div>
+
+ <div class="form-group">
+        <label>
+        {% if plataforma.cantidad == true %}
+        <input type="checkbox" name="cantidad" checked>
+        {% else %}
+        <input type="checkbox" name="cantidad">
+         {% endif %}
+        Premium 
+        </label>
+    </div>
+   <br>
+    <button type="submit" class="btn btn-primary"> Enviar</button>
+</form>
+
+{% endif %}
+
+{% endblock %}

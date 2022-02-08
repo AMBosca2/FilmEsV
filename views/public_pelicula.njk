@@ -1,0 +1,89 @@
+
+{% extends "public_base.njk" %}
+{% block nombre %} Card de pelicula {% endblock %}
+  {% block contenido %}
+
+{% if (session and session.login) %}
+<a class="btn btn-dark" href="/admin">Atrás</a>
+{% else %}
+<a class="btn btn-dark" href="/">Atrás</a>
+{% endif %}
+<br>
+<div class="container">
+  <div class="cellphone-container">    
+      <div class="movie">       
+        <div class="movie-img">
+       <img src="/public/uploads/{{ pelicula.imagen }}">
+        </div>
+        <div class="text-movie-cont">
+          <div class="mr-grid">
+            <div class="col1">
+              <h1 id="tituloPelicula"class="titulo">{{ pelicula.titulo }}</h1>
+              <hr class="lineCard">
+              <ul class="movie-gen">
+                <li>Duración: {{ pelicula.duracion }}h /</li>
+                <li>Género: {{ pelicula.genero }} </li>
+              </ul>
+              <br>
+              <div class="star">
+              {% if pelicula.valoracion == 1 %}
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              {% endif %}
+              {% if pelicula.valoracion == 2 %}
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              {% endif %}
+              {% if pelicula.valoracion == 3 %}
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              {% endif %}
+              {% if pelicula.valoracion == 4 %}
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              {% endif %}
+              {% if pelicula.valoracion == 5 %}
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              <div class="fa fa-star" style='color: #f3da35'> </div>
+              {% endif %}
+              </div><div class="val" style='color: white'>{{pelicula.valoracion}}/5</div>
+            </div>
+          </div>
+          <div class="mr-grid summary-row">
+            <div class="col">
+            
+            {% if pelicula.plataforma.cantidad == false%}
+            <h5>{{ pelicula.plataforma.nombre }}</h5>
+             {% else %} 
+            <h5>{{ pelicula.plataforma.nombre }} Premium</h5>
+             {% endif %}
+
+              {% if pelicula.plataforma.fecha == undefined%}
+              <p style="color: white">&nbsp;&nbsp;Finaliza: indefinido.</p>
+              {% else %} 
+              <p style="color: white">&nbsp;&nbsp;Finaliza: {{pelicula.plataforma.fecha}} </p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="mr-grid">
+            <div class="col1">
+              <p class="movie-description">{{ pelicula.sinopsi }}</p>
+            </div>
+          </div>
+          <div class="mr-grid actors-row">
+            <div class="col1">
+              <p class="movie-actors">Director: <a style="text-decoration:none" href="/director/{{pelicula.director.id}}">  {{ pelicula.director.nombre }} </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  
+</a>
+{% endblock %}
